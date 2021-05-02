@@ -5,10 +5,7 @@ import m06.uf4.DAO.comanda.Comanda;
 import m06.uf4.DAO.empleat.Empleat;
 import m06.uf4.DAO.empleat.EmpleatDAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +29,7 @@ public class EmpleatImpSQL implements EmpleatDAO {
             sentencia.setString(2, emp.getCognom());
             sentencia.setString(3, emp.getOfici());
             sentencia.setInt(4, emp.getCapId());
-            sentencia.setDate(5, emp.getDataAlta());
+            sentencia.setDate(5, new Date(emp.getDataAlta().getTime()));
             sentencia.setInt(6, emp.getSalari());
             sentencia.setInt(7, emp.getComissio());
             sentencia.setInt(8, emp.getDepNo());
@@ -84,7 +81,7 @@ public class EmpleatImpSQL implements EmpleatDAO {
     @Override
     public boolean eliminarConjunt() {
         boolean valor = false;
-        String sql = "DELETE * FROM EMPLEAT ";
+        String sql = "DELETE FROM EMPLEAT ";
         PreparedStatement sentencia;
         try {
             sentencia = conexion.prepareStatement(sql);
@@ -113,7 +110,7 @@ public class EmpleatImpSQL implements EmpleatDAO {
             sentencia.setString(1, emp.getCognom());
             sentencia.setString(2, emp.getOfici());
             sentencia.setInt(3, emp.getCapId());
-            sentencia.setDate(4, emp.getDataAlta());
+            sentencia.setDate(4, new Date(emp.getDataAlta().getTime()));
             sentencia.setInt(5, emp.getSalari());
             sentencia.setInt(6, emp.getComissio());
             sentencia.setInt(7, emp.getDepNo());
@@ -145,7 +142,7 @@ public class EmpleatImpSQL implements EmpleatDAO {
                 emp.setCognom(rs.getString("cognom"));
                 emp.setOfici(rs.getString("ofici"));
                 emp.setCapId(rs.getInt("cap_id"));
-                emp.setDataAlta(rs.getDate("data_alta"));
+                emp.setDataAlta(new java.util.Date (rs.getDate("data_alta").getTime()));
                 emp.setSalari(rs.getInt("salari"));
                 emp.setComissio(rs.getInt("comissio"));
                 emp.setDepNo(rs.getInt("dept_no"));
@@ -176,7 +173,7 @@ public class EmpleatImpSQL implements EmpleatDAO {
                 emp.setCognom(rs.getString("cognom"));
                 emp.setOfici(rs.getString("ofici"));
                 emp.setCapId(rs.getInt("cap_id"));
-                emp.setDataAlta(rs.getDate("data_alta"));
+                emp.setDataAlta(new java.util.Date (rs.getDate("data_alta").getTime()));
                 emp.setSalari(rs.getInt("salari"));
                 emp.setComissio(rs.getInt("comissio"));
                 emp.setDepNo(rs.getInt("dept_no"));

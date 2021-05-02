@@ -4,10 +4,7 @@ import m06.uf4.DAO.DAOFactory.SQLDAOFactory;
 import m06.uf4.DAO.comanda.Comanda;
 import m06.uf4.DAO.comanda.ComandaDAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +26,10 @@ public class ComandaImpSQL implements ComandaDAO {
             sentencia = conexion.prepareStatement(sql);
             sentencia.setInt(1, com.getId_comanda());
             sentencia.setInt(2, com.getId_producte());
-            sentencia.setDate(3, com.getData_comanda());
+            sentencia.setDate(3, new Date(com.getData_comanda().getTime()));
             sentencia.setInt(4, com.getQuantitat());
             sentencia.setInt(5, com.getId_prov());
-            sentencia.setDate(6, com.getData_tramesa());
+            sentencia.setDate(6, new Date(com.getData_tramesa().getTime()));
             sentencia.setDouble(7, com.getTotal());
             int filas = sentencia.executeUpdate();
             System.out.printf("Filas insertadas: %d%n", filas);
@@ -84,7 +81,7 @@ public class ComandaImpSQL implements ComandaDAO {
     @Override
     public boolean eliminarConjunt() {
         boolean valor = false;
-        String sql = "DELETE * FROM COMANDA";
+        String sql = "DELETE FROM COMANDA";
         PreparedStatement sentencia;
         try {
             sentencia = conexion.prepareStatement(sql);
@@ -111,10 +108,10 @@ public class ComandaImpSQL implements ComandaDAO {
             sentencia = conexion.prepareStatement(sql);
             sentencia.setInt(7, com.getId_comanda());
             sentencia.setInt(1, com.getId_producte());
-            sentencia.setDate(2, com.getData_comanda());
+            sentencia.setDate(2, new Date(com.getData_comanda().getTime()));
             sentencia.setInt(3, com.getQuantitat());
             sentencia.setInt(4, com.getId_prov());
-            sentencia.setDate(5, com.getData_tramesa());
+            sentencia.setDate(5, new Date(com.getData_tramesa().getTime()));
             sentencia.setDouble(6, com.getTotal());
             int filas = sentencia.executeUpdate();
             System.out.printf("Filas modificadas: %d%n", filas);
@@ -171,10 +168,10 @@ public class ComandaImpSQL implements ComandaDAO {
             while (rs.next()) {
                 com.setId_comanda(rs.getInt("id_comanda"));
                 com.setId_producte(rs.getInt("id_producte"));
-                com.setData_comanda(rs.getDate("data_comanda"));
+                com.setData_comanda(new java.util.Date(rs.getDate("data_comanda").getTime()));
                 com.setQuantitat(rs.getInt("quantitat"));
                 com.setId_prov(rs.getInt("id_prov"));
-                com.setData_tramesa(rs.getDate("data_tramesa"));
+                com.setData_tramesa(new java.util.Date(rs.getDate("data_tramesa").getTime()));
                 com.setTotal(rs.getDouble("total"));
                 listComs.add(com);
             }
@@ -198,10 +195,10 @@ public class ComandaImpSQL implements ComandaDAO {
             while (rs.next()) {
                 com.setId_comanda(rs.getInt("id_comanda"));
                 com.setId_producte(rs.getInt("id_producte"));
-                com.setData_comanda(rs.getDate("data_comanda"));
+                com.setData_comanda(new java.util.Date(rs.getDate("data_comanda").getTime()));
                 com.setQuantitat(rs.getInt("quantitat"));
                 com.setId_prov(rs.getInt("id_prov"));
-                com.setData_tramesa(rs.getDate("data_tramesa"));
+                com.setData_tramesa(new java.util.Date(rs.getDate("data_tramesa").getTime()));
                 com.setTotal(rs.getDouble("total"));
                 listComs.add(com);
             }

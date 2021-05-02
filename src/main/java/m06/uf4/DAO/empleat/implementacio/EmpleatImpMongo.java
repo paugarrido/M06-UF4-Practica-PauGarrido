@@ -70,7 +70,14 @@ public class EmpleatImpMongo implements EmpleatDAO {
 
     @Override
     public boolean eliminarConjunt() {
-        return false;
+        List<Empleat> empleats = consultarLlista();
+        boolean flag = true;
+        for (Empleat empleat : empleats){
+            if (eliminar(empleat.getEmplatID())){
+                flag = false;
+            }
+        }
+        return flag;
     }
 
     @Override

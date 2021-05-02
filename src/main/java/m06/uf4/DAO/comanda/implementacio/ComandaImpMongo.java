@@ -72,7 +72,14 @@ public class ComandaImpMongo implements ComandaDAO {
 
     @Override
     public boolean eliminarConjunt() {
-        return false;
+        List<Comanda> comandas = consultarLlista();
+        boolean flag = true;
+        for (Comanda comanda : comandas){
+            if (eliminar(comanda.getId_comanda())){
+                flag = false;
+            }
+        }
+        return flag;
     }
 
     @Override

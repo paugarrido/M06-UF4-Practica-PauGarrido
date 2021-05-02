@@ -1,20 +1,9 @@
 package m06.uf4.DAO.empleat;
 
 
-/*CREATE TABLE IF NOT EXISTS shop.EMPLEAT (
- EMPLEAT_ID    SMALLINT (4) UNSIGNED,
- COGNOM    VARCHAR (10) NOT NULL,
- OFICI     VARCHAR (10),
- CAP_ID       SMALLINT (4) UNSIGNED,
- DATA_ALTA DATE,
- SALARI    INT UNSIGNED,
- COMISSIO  INT UNSIGNED,
- DEPT_NO   TINYINT (2) UNSIGNED NOT NULL,
- PRIMARY KEY (EMPLEAT_NO));*/
-
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 public class Empleat implements Serializable {
 

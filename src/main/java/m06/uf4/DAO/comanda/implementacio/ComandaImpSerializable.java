@@ -74,17 +74,12 @@ public class ComandaImpSerializable implements ComandaDAO {
     public List<Comanda> consultarLlista() {
         List<Comanda> Listcomandes = new ArrayList<>();
         Comanda comanda;
-
-
         try {
             ObjectInputStream ObjectInputStream = new ObjectInputStream(new FileInputStream(file));
-            int i = 1;
             try {
                 while (true) {
                     comanda = (Comanda) ObjectInputStream.readObject();
                     Listcomandes.add(comanda);
-                    System.out.print(i + "=>");
-                    i++;
 
                 }
             } catch (EOFException eo) {

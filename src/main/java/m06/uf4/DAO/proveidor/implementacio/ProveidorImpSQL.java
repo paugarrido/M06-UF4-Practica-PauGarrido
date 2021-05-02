@@ -86,7 +86,7 @@ public class ProveidorImpSQL implements ProveidorDAO {
     @Override
     public boolean eliminarConjunt() {
         boolean valor = false;
-        String sql = "DELETE * FROM PROV ";
+        String sql = "DELETE FROM PROV ";
         PreparedStatement sentencia;
         try {
             sentencia = conexion.prepareStatement(sql);

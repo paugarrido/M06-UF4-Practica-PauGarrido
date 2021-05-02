@@ -1,15 +1,16 @@
 package m06.uf4.DAO.producte.implementacio;
 
+import m06.uf4.DAO.DAOFactory.DAOFactory;
 import m06.uf4.DAO.DAOFactory.SQLDAOFactory;
+import m06.uf4.DAO.comanda.Comanda;
 import m06.uf4.DAO.empleat.Empleat;
 import m06.uf4.DAO.producte.Producte;
 import m06.uf4.DAO.producte.ProducteDAO;
+import m06.uf4.DAO.proveidor.Proveidor;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 // EMPLEAT_ID, COGNOM, OFICI, CAP, DATA_ALTA, SALARI, COMISSIO, DEPT_NO
@@ -75,7 +76,7 @@ public class ProducteImpSQL implements ProducteDAO {
     @Override
     public boolean eliminarConjunt() {
         boolean valor = false;
-        String sql = "DELETE * FROM PRODUCTE ";
+        String sql = "DELETE FROM PRODUCTE ";
         PreparedStatement sentencia;
         try {
             sentencia = conexion.prepareStatement(sql);
@@ -97,6 +98,7 @@ public class ProducteImpSQL implements ProducteDAO {
         String sql = "UPDATE PRODUCTE SET stockactual = ?, stockminim = ?WHERE id_producte = ? ";
         PreparedStatement sentencia;
         try {
+            Producte producte = consultar(pro.getId_producte());
             sentencia = conexion.prepareStatement(sql);
             sentencia.setInt(3, pro.getId_producte());
             sentencia.setInt(1, pro.getStockactual());
@@ -108,6 +110,10 @@ public class ProducteImpSQL implements ProducteDAO {
                 valor = true;
                 System.out.printf("Producte %d modificado%n", pro.getId_producte());
             }
+            if (pro.getStockminim() > pro.getStockactual()){
+                event1314(pro);
+            }
+
             sentencia.close();
         } catch (SQLException e) {
             MensajeExcepcion(e);
@@ -163,6 +169,40 @@ public class ProducteImpSQL implements ProducteDAO {
             MensajeExcepcion(e);
         }
         return listProds;
+    }
+
+    private void event1314(Producte producte){
+        Comanda comanda = new Comanda();
+        SQLDAOFactory sqldaoFactory = (SQLDAOFactory) DAOFactory.getDAOFactory(1);
+
+        List<Comanda> listComandes = sqldaoFactory.getComandaDAO().consultarLlista();
+        comanda.setId_comanda(listComandes.get(listComandes.size()-1).getId_comanda() + 1);
+
+        comanda.setId_producte(producte.getId_producte());
+
+        List<Proveidor> listProveidors = sqldaoFactory.getProveidorDAO().consultarLlista();
+        listProveidors.forEach(proveidor -> {
+            if (proveidor.getId_producte() == producte.getId_producte()){
+                comanda.setId_prov(proveidor.getId_prov());
+
+            }
+        });
+
+        comanda.setQuantitat(25);
+        Calendar c = Calendar.getInstance();
+        c.setTime(comanda.getData_comanda());
+        c.add(Calendar.DATE, 4);
+        comanda.setData_tramesa(c.getTime());
+
+        comanda.setTotal(producte.getPreu() * 25);
+
+        sqldaoFactory.getComandaDAO().insertar(comanda);
+
+        Proveidor prov = sqldaoFactory.getProveidorDAO().consultar(comanda.getId_prov());
+        prov.setQuantitat(prov.getQuantitat() + comanda.getQuantitat());
+
+        sqldaoFactory.getProveidorDAO().modificarQuantitat(prov);
+
     }
 
     private void MensajeExcepcion(SQLException e) {

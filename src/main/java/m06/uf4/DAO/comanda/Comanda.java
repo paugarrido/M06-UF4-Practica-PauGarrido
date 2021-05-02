@@ -1,7 +1,7 @@
 package m06.uf4.DAO.comanda;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 public class Comanda implements Serializable {
 

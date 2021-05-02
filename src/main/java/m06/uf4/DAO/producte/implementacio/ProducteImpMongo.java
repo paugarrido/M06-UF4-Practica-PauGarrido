@@ -32,13 +32,17 @@ public class ProducteImpMongo implements ProducteDAO {
     }
 
 
-
     @Override
     public boolean insertar(Producte producte) {
         conectar();
         mongoCollection.insertOne(producte);
         MongoDAOFactory.close();
         return true;
+    }
+
+    @Override
+    public int insertarLlista(List<Producte> productes) {
+        return 0;
     }
 
     @Override
@@ -54,7 +58,14 @@ public class ProducteImpMongo implements ProducteDAO {
 
     @Override
     public boolean eliminarConjunt() {
-        return false;
+        List<Producte> productes = consultarLlista();
+        boolean flag = true;
+        for (Producte producte : productes){
+            if (eliminar(producte.getId_producte())){
+                flag = false;
+            }
+        }
+        return flag;
     }
 
     @Override
