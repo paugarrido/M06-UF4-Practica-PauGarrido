@@ -75,16 +75,12 @@ public class ProveidorImpSerializable implements ProveidorDAO {
     public List<Proveidor> consultarLlista() {
         List<Proveidor> Listproveidors = new ArrayList<>();
         Proveidor proveidors;
-
         try {
             ObjectInputStream ObjectInputStream = new ObjectInputStream(new FileInputStream(file));
-            int i = 1;
             try {
                 while (true) {
                     proveidors = (Proveidor) ObjectInputStream.readObject();
                     Listproveidors.add(proveidors);
-                    System.out.print(i + "=>");
-                    i++;
 
                 }
             } catch (EOFException eo) {

@@ -51,8 +51,8 @@ public class ComandaImpMongo implements ComandaDAO {
     public int insertarLlista(List<Comanda> comandes) {
         conectar();
 
-        for (Comanda comandaJSON : comandes) {
-            mongoCollection.insertOne(comandaJSON);
+        for (Comanda comanda : comandes) {
+            mongoCollection.insertOne(comanda);
         }
 
         MongoDAOFactory.close();

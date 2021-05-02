@@ -71,13 +71,12 @@ public class ProducteImpSerializable implements ProducteDAO {
 
         try {
             ObjectInputStream ObjectInputStream = new ObjectInputStream(new FileInputStream(file));
-            int i = 1;
+
             try {
                 while (true) {
                     producte = (Producte) ObjectInputStream.readObject();
                     Listproductes.add(producte);
-                    System.out.print(i + "=>");
-                    i++;
+
 
                 }
             } catch (EOFException eo) {

@@ -49,8 +49,8 @@ public class EmpleatImpMongo implements EmpleatDAO {
     public int insertarLlista(List<Empleat> empleats) {
         conectar();
 
-        for (Empleat empleatJSON : empleats) {
-            mongoCollection.insertOne(empleatJSON);
+        for (Empleat empleat : empleats) {
+            mongoCollection.insertOne(empleat);
         }
 
         MongoDAOFactory.close();
@@ -60,7 +60,7 @@ public class EmpleatImpMongo implements EmpleatDAO {
     @Override
     public boolean eliminar(int empleatId) {
         boolean valor = false;
-        DeleteResult deleteResult = database.getCollection("EMPLEAT").deleteOne(eq("empleat_id", empleatId));
+        DeleteResult deleteResult = database.getCollection("EMPLEAT").deleteOne(eq("emplatID", empleatId));
         System.out.println("Comandas eliminadas: " + deleteResult.getDeletedCount());
         if (deleteResult.getDeletedCount() > 0){
             valor = true;

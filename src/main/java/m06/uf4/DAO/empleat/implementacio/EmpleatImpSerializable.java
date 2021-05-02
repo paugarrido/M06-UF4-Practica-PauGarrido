@@ -78,18 +78,16 @@ public class EmpleatImpSerializable implements EmpleatDAO {
 
         try {
             ObjectInputStream ObjectInputStream = new ObjectInputStream(new FileInputStream(file));
-            int i = 1;
+
             try {
                 while (true) {
                     empleat = (Empleat) ObjectInputStream.readObject();
                     Listempleat.add(empleat);
-                    System.out.print(i + "=>");
-                    i++;
-
                 }
             } catch (EOFException eo) {
                 System.out.println("FIN DE LECTURA.");
             } catch (StreamCorruptedException x) {
+
             }
             ObjectInputStream.close();
         }catch (Exception e){

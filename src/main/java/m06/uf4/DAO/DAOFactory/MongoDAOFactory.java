@@ -26,7 +26,7 @@ public class MongoDAOFactory extends DAOFactory{
     public static MongoClient mongoClient;
     static MongoDatabase myDB;
     private static final String DATABASE = "shop";
-    private static final String URL = "mongodb://192.168.56.101:27017";
+    private static final String URL = "mongodb://192.168.56.102:27017";
 
 
     public MongoDAOFactory(){

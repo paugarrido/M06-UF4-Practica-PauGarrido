@@ -44,8 +44,8 @@ public class ProveidorImpMongo implements ProveidorDAO {
     public int insertarLlista(List<Proveidor> provs) {
         conectar();
 
-        for (Proveidor proveidorJSON : provs) {
-            mongoCollection.insertOne(proveidorJSON);
+        for (Proveidor proveidor : provs) {
+            mongoCollection.insertOne(proveidor);
         }
 
         MongoDAOFactory.close();
