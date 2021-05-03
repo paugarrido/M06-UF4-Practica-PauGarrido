@@ -81,9 +81,9 @@ public class EmpleatImpMongo implements EmpleatDAO {
 
         boolean valor = false;
 
-        UpdateResult updateResult = database.getCollection("EMPLEAT").updateOne(eq("empleat_id", empleat.getEmplatID()), Updates.combine(set("cap_id",empleat.getCapId()
-        ), set("cognom",empleat.getCognom()), set("dept_no",empleat.getDepNo()),set("empleat_id",empleat.getEmplatID()), set("ofici",empleat.getOfici()),set("salari",empleat.getSalari()
-        ), set("comissio",empleat.getComissio()), set("data_alta",empleat.getDataAlta())));
+        UpdateResult updateResult = database.getCollection("EMPLEAT").updateOne(eq("emplatID", empleat.getEmplatID()), Updates.combine(set("capId",empleat.getCapId()
+        ), set("cognom",empleat.getCognom()), set("depNo",empleat.getDepNo()),set("emplatID",empleat.getEmplatID()), set("ofici",empleat.getOfici()),set("salari",empleat.getSalari()
+        ), set("comissio",empleat.getComissio()), set("dataAlta",empleat.getDataAlta())));
 
         System.out.println("Empleats actualizados: " + updateResult.getMatchedCount());
 
