@@ -123,7 +123,7 @@ public class ProducteImpSQL implements ProducteDAO {
 
     @Override
     public Producte consultar(int productID) {
-        String sql = "SELECT id_producte, descripcio, stockactual, stockminim, preu FROM PRODUCTE WHERE id_producte = ?";
+        String sql = "SELECT * FROM PRODUCTE WHERE id_producte = ?";
         PreparedStatement sentencia;
         Producte pro = new Producte();
         try {
@@ -148,7 +148,7 @@ public class ProducteImpSQL implements ProducteDAO {
 
     @Override
     public List<Producte> consultarLlista() {
-        String sql = "SELECT id_producte, descripcio, stockactual, stockminim, preu FROM PRODUCTE ";
+        String sql = "SELECT * FROM PRODUCTE ";
         PreparedStatement sentencia;
         Producte pro = new Producte();
         List<Producte> listProds = new ArrayList<>();

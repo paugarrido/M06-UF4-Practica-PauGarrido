@@ -130,7 +130,7 @@ public class ComandaImpSQL implements ComandaDAO {
 
     @Override
     public Comanda consultar(int comandaId) {
-        String sql = "SELECT id_comanda, id_producte, data_comanda , quantitat , id_prov , data_tramesa , total FROM COMANDA WHERE id_comanda = ?";
+        String sql = "SELECT * FROM COMANDA WHERE id_comanda = ?";
         PreparedStatement sentencia;
         Comanda com = new Comanda();
         try {
@@ -157,7 +157,7 @@ public class ComandaImpSQL implements ComandaDAO {
 
     @Override
     public List<Comanda> consultarLlistaPerProducte(int productID) {
-        String sql = "SELECT id_comanda, id_producte, data_comanda , quantitat , id_prov , data_tramesa , total FROM COMANDA WHERE id_producte = ?";
+        String sql = "SELECT * FROM COMANDA WHERE id_producte = ?";
         PreparedStatement sentencia;
         Comanda com = new Comanda();
         List<Comanda> listComs = new ArrayList<>();
@@ -185,7 +185,7 @@ public class ComandaImpSQL implements ComandaDAO {
 
     @Override
     public List<Comanda> consultarLlista() {
-        String sql = "SELECT id_comanda, id_producte, data_comanda , quantitat , id_prov , data_tramesa , total FROM COMANDA";
+        String sql = "SELECT * FROM COMANDA";
         PreparedStatement sentencia;
         Comanda com = new Comanda();
         List<Comanda> listComs = new ArrayList<>();

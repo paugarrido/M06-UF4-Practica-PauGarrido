@@ -48,11 +48,7 @@ public class EmpleatImpMongo implements EmpleatDAO {
     @Override
     public int insertarLlista(List<Empleat> empleats) {
         conectar();
-
-        for (Empleat empleat : empleats) {
-            mongoCollection.insertOne(empleat);
-        }
-
+        mongoCollection.insertMany(empleats);
         MongoDAOFactory.close();
         return empleats.size();
     }

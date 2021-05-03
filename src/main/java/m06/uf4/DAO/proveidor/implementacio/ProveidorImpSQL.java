@@ -126,7 +126,7 @@ public class ProveidorImpSQL implements ProveidorDAO {
 
     @Override
     public Proveidor consultar(int idProv) {
-        String sql = "SELECT id_prov, nom, adreca, ciutat, estat, codi_postal, area, telefon, id_producte, quantitat, limit_credit, observacions FROM PROV WHERE id_prov = ?";
+        String sql = "SELECT * FROM PROV WHERE id_prov = ?";
         PreparedStatement sentencia;
         Proveidor prov = new Proveidor();
         try {
@@ -158,7 +158,7 @@ public class ProveidorImpSQL implements ProveidorDAO {
 
     @Override
     public List<Proveidor> consultarLlista() {
-        String sql = "SELECT id_prov, nom, adreca, ciutat, estat, codi_postal, area, telefon, id_producte, quantitat, limit_credit, observacions FROM PROV";
+        String sql = "SELECT * FROM PROV";
         PreparedStatement sentencia;
         Proveidor prov = new Proveidor();
         List<Proveidor> listProvs = new ArrayList<>();
@@ -190,7 +190,7 @@ public class ProveidorImpSQL implements ProveidorDAO {
 
     @Override
     public Proveidor consultarPerIdProducte(int productID) {
-        String sql = "SELECT id_prov, nom, adreca, ciutat, estat, codi_postal, area, telefon, id_producte, quantitat, limit_credit, observacions FROM PROV WHERE id_producte = ?";
+        String sql = "SELECT * FROM PROV WHERE id_producte = ?";
         PreparedStatement sentencia;
         Proveidor prov = new Proveidor();
         try {

@@ -29,31 +29,39 @@ public class Main {
 
     public static void ej1(){
         serializableDAOFactory.getEmpleatDAO().insertarLlista(sqldaoFactory.getEmpleatDAO().consultarLlista());
+        System.out.println(serializableDAOFactory.getEmpleatDAO().consultarLlista());
     }
 
     public static void ej2(){
         mongoDAOFactory.getEmpleatDAO().insertarLlista(serializableDAOFactory.getEmpleatDAO().consultarLlista());
+        System.out.println(mongoDAOFactory.getEmpleatDAO().consultarLlista());
     }
 
     public static void ej3(){
         serializableDAOFactory.getComandaDAO().insertarLlista(sqldaoFactory.getComandaDAO().consultarLlista());
+        System.out.println(serializableDAOFactory.getComandaDAO().consultarLlista());
     }
     public static void ej4(){
         mongoDAOFactory.getComandaDAO().insertarLlista(serializableDAOFactory.getComandaDAO().consultarLlista());
+        System.out.println(mongoDAOFactory.getComandaDAO().consultarLlista());
     }
 
     public static void ej5(){
         serializableDAOFactory.getProducteDAO().insertarLlista(sqldaoFactory.getProducteDAO().consultarLlista());
+        System.out.println(serializableDAOFactory.getProducteDAO().consultarLlista());
     }
     public static void ej6(){
         mongoDAOFactory.getProducteDAO().insertarLlista(serializableDAOFactory.getProducteDAO().consultarLlista());
+        System.out.println(mongoDAOFactory.getProducteDAO().consultarLlista());
     }
 
     public static void ej7(){
         serializableDAOFactory.getProveidorDAO().insertarLlista(sqldaoFactory.getProveidorDAO().consultarLlista());
+        System.out.println(serializableDAOFactory.getProveidorDAO().consultarLlista());
     }
     public static void ej8(){
         mongoDAOFactory.getProveidorDAO().insertarLlista(serializableDAOFactory.getProveidorDAO().consultarLlista());
+        System.out.println(mongoDAOFactory.getProveidorDAO().consultarLlista());
     }
 
     public static void ej9(){
@@ -62,8 +70,8 @@ public class Main {
 
     public static void ej10(){
         mongoDAOFactory.getEmpleatDAO().eliminar(7499);
-//        serializableDAOFactory.getEmpleatDAO().eliminar(7499);
-//        sqldaoFactory.getEmpleatDAO().eliminar(7499);
+        serializableDAOFactory.getEmpleatDAO().eliminar(7499);
+        sqldaoFactory.getEmpleatDAO().eliminar(7499);
     }
 
     public static void ej11(){

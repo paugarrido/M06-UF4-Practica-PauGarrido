@@ -130,7 +130,7 @@ public class EmpleatImpSQL implements EmpleatDAO {
     // CONSULTAR EMPLEAT
     @Override
     public Empleat consultar(int empId) {
-        String sql = "SELECT empleat_id, cognom, ofici, cap_id, data_alta, salari, comissio, dept_no FROM EMPLEAT WHERE empleat_id = ?";
+        String sql = "SELECT * FROM EMPLEAT WHERE empleat_id = ?";
         PreparedStatement sentencia;
         Empleat emp = new Empleat();
         try {
