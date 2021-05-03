@@ -51,7 +51,7 @@ public class ProducteImpSQL implements ProducteDAO {
         return 0;
     }
 
-    // ELIMINAR PRODUCTE
+
     @Override
     public boolean eliminar(int productId) {
         boolean valor = false;

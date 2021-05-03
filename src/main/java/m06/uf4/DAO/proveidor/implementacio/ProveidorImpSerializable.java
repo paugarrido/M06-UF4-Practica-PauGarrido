@@ -31,17 +31,6 @@ public class ProveidorImpSerializable implements ProveidorDAO {
 
             for (int i=0;i< provs.size(); i++){
                 objectOutputStream.writeObject(provs.get(i));
-                objectOutputStream.writeInt(provs.get(i).getId_prov());
-                objectOutputStream.writeUTF(provs.get(i).getNom());
-                objectOutputStream.writeUTF(provs.get(i).getCiutat());
-                objectOutputStream.writeUTF(provs.get(i).getEstat());
-                objectOutputStream.writeUTF(provs.get(i).getCodi_postal());
-                objectOutputStream.writeInt(provs.get(i).getArea());
-                objectOutputStream.writeUTF(provs.get(i).getTelefon());
-                objectOutputStream.writeInt(provs.get(i).getId_producte());
-                objectOutputStream.writeInt(provs.get(i).getQuantitat());
-                objectOutputStream.writeDouble(provs.get(i).getLimit_credit());
-                objectOutputStream.writeUTF(provs.get(i).getObservacions());
 
             }
             objectOutputStream.close();

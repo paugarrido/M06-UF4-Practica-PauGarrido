@@ -31,11 +31,6 @@ public class ProducteImpSerializable implements ProducteDAO {
 
             for (int i=0;i< productes.size(); i++){
                 objectOutputStream.writeObject(productes.get(i));
-                objectOutputStream.writeInt(productes.get(i).getId_producte());
-                objectOutputStream.writeUTF(productes.get(i).getDescripcio());
-                objectOutputStream.writeInt(productes.get(i).getStockactual());
-                objectOutputStream.writeInt(productes.get(i).getStockminim());
-                objectOutputStream.writeDouble(productes.get(i).getPreu());
             }
             objectOutputStream.close();
         }catch (Exception e){

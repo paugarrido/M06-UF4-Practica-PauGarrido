@@ -160,7 +160,7 @@ public class EmpleatImpSQL implements EmpleatDAO {
     // CONSULTAR LLISTA EMPLEAT
     @Override
     public List<Empleat> consultarLlista() {
-        String sql = "SELECT empleat_id, cognom, ofici, cap_id, data_alta, salari, comissio, dept_no FROM EMPLEAT";
+        String sql = "SELECT * FROM EMPLEAT";
         PreparedStatement sentencia;
         Empleat emp = new Empleat();
         List<Empleat> listEmpls = new ArrayList<>();

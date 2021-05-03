@@ -101,7 +101,7 @@ public class EmpleatImpMongo implements EmpleatDAO {
     @Override
     public Empleat consultar(int empleatId) {
         conectar();
-        return mongoCollection.find(eq("empleat_id", empleatId)).first();
+        return mongoCollection.find(eq("emplatID", empleatId)).first();
     }
 
     @Override

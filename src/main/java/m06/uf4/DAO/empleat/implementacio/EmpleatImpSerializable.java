@@ -30,14 +30,6 @@ public class EmpleatImpSerializable implements EmpleatDAO {
 
             for (int i=0;i< emps.size(); i++){
                 objectOutputStream.writeObject(emps.get(i));
-                objectOutputStream.writeInt(emps.get(i).getEmplatID());
-                objectOutputStream.writeUTF(emps.get(i).getCognom());
-                objectOutputStream.writeUTF(emps.get(i).getOfici());
-                objectOutputStream.writeInt(emps.get(i).getCapId());
-                objectOutputStream.writeUTF(String.valueOf(emps.get(i).getDataAlta()));
-                objectOutputStream.writeInt(emps.get(i).getEmplatID());
-                objectOutputStream.writeInt(emps.get(i).getComissio());
-                objectOutputStream.writeInt(emps.get(i).getDepNo());
             }
             objectOutputStream.close();
         }catch (Exception e){

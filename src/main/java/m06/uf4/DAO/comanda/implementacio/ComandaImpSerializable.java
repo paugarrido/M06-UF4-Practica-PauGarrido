@@ -30,13 +30,6 @@ public class ComandaImpSerializable implements ComandaDAO {
 
             for (int i=0;i< comandes.size(); i++){
                 objectOutputStream.writeObject(comandes.get(i));
-                objectOutputStream.writeInt(comandes.get(i).getId_comanda());
-                objectOutputStream.writeInt(comandes.get(i).getId_producte());
-                objectOutputStream.writeUTF(String.valueOf(comandes.get(i).getData_comanda()));
-                objectOutputStream.writeInt(comandes.get(i).getQuantitat());
-                objectOutputStream.writeInt(comandes.get(i).getId_prov());
-                objectOutputStream.writeUTF(String.valueOf(comandes.get(i).getData_tramesa()));
-                objectOutputStream.writeDouble(comandes.get(i).getTotal());
             }
             objectOutputStream.close();
         }catch (Exception e){
