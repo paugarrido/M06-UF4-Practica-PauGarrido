@@ -162,13 +162,14 @@ public class EmpleatImpSQL implements EmpleatDAO {
     public List<Empleat> consultarLlista() {
         String sql = "SELECT * FROM EMPLEAT";
         PreparedStatement sentencia;
-        Empleat emp = new Empleat();
+
         List<Empleat> listEmpls = new ArrayList<>();
         try {
             sentencia = conexion.prepareStatement(sql);
 
             ResultSet rs = sentencia.executeQuery();
             while (rs.next()) {
+                Empleat emp = new Empleat();
                 emp.setEmplatID(rs.getInt("empleat_id"));
                 emp.setCognom(rs.getString("cognom"));
                 emp.setOfici(rs.getString("ofici"));

@@ -27,8 +27,6 @@ public class ProducteImpSerializable implements ProducteDAO {
             file.delete();
             FileOutputStream fileOutputStream = new FileOutputStream(file,true);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
-
             for (int i=0;i< productes.size(); i++){
                 objectOutputStream.writeObject(productes.get(i));
             }

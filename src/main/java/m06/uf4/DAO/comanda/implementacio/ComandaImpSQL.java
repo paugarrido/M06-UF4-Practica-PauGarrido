@@ -187,12 +187,13 @@ public class ComandaImpSQL implements ComandaDAO {
     public List<Comanda> consultarLlista() {
         String sql = "SELECT * FROM COMANDA";
         PreparedStatement sentencia;
-        Comanda com = new Comanda();
+
         List<Comanda> listComs = new ArrayList<>();
         try {
             sentencia = conexion.prepareStatement(sql);
             ResultSet rs = sentencia.executeQuery();
             while (rs.next()) {
+                Comanda com = new Comanda();
                 com.setId_comanda(rs.getInt("id_comanda"));
                 com.setId_producte(rs.getInt("id_producte"));
                 com.setData_comanda(new java.util.Date(rs.getDate("data_comanda").getTime()));

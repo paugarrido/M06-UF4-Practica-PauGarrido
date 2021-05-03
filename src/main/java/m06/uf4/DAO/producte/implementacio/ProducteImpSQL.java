@@ -150,12 +150,13 @@ public class ProducteImpSQL implements ProducteDAO {
     public List<Producte> consultarLlista() {
         String sql = "SELECT * FROM PRODUCTE ";
         PreparedStatement sentencia;
-        Producte pro = new Producte();
+
         List<Producte> listProds = new ArrayList<>();
         try {
             sentencia = conexion.prepareStatement(sql);
             ResultSet rs = sentencia.executeQuery();
             while (rs.next()) {
+                Producte pro = new Producte();
                 pro.setId_producte(rs.getInt("id_producte"));
                 pro.setDescripcio(rs.getString("descripcio"));
                 pro.setStockactual(rs.getInt("stockactual"));

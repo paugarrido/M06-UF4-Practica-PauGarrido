@@ -160,12 +160,13 @@ public class ProveidorImpSQL implements ProveidorDAO {
     public List<Proveidor> consultarLlista() {
         String sql = "SELECT * FROM PROV";
         PreparedStatement sentencia;
-        Proveidor prov = new Proveidor();
+
         List<Proveidor> listProvs = new ArrayList<>();
         try {
             sentencia = conexion.prepareStatement(sql);
             ResultSet rs = sentencia.executeQuery();
             while (rs.next()) {
+                Proveidor prov = new Proveidor();
                 prov.setId_prov(rs.getInt("id_prov"));
                 prov.setNom(rs.getString("nom"));
                 prov.setAdreca(rs.getString("adreca"));
