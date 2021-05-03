@@ -2,12 +2,10 @@ package m06.uf4.DAO.DAOFactory;
 
 public class Persistencia {
 
-    public static SQLDAOFactory sqldaoFactory;
-    public static MongoDAOFactory mongoDAOFactory;
-    public static SerializableDAOFactory serializableDAOFactory;
-    
 
-    public static void mongo(){
+
+
+    public static void mongo(SerializableDAOFactory serializableDAOFactory,  MongoDAOFactory mongoDAOFactory, SQLDAOFactory sqldaoFactory){
         serializableDAOFactory.getComandaDAO().insertarLlista(mongoDAOFactory.getComandaDAO().consultarLlista());
         serializableDAOFactory.getProducteDAO().insertarLlista(mongoDAOFactory.getProducteDAO().consultarLlista());
         serializableDAOFactory.getProveidorDAO().insertarLlista(mongoDAOFactory.getProveidorDAO().consultarLlista());
@@ -24,7 +22,7 @@ public class Persistencia {
         sqldaoFactory.getEmpleatDAO().insertarLlista(serializableDAOFactory.getEmpleatDAO().consultarLlista());
     }
 
-    public static void sql(){
+    public static void sql(SerializableDAOFactory serializableDAOFactory,  MongoDAOFactory mongoDAOFactory, SQLDAOFactory sqldaoFactory){
         serializableDAOFactory.getComandaDAO().insertarLlista(sqldaoFactory.getComandaDAO().consultarLlista());
         serializableDAOFactory.getProducteDAO().insertarLlista(sqldaoFactory.getProducteDAO().consultarLlista());
         serializableDAOFactory.getProveidorDAO().insertarLlista(sqldaoFactory.getProveidorDAO().consultarLlista());

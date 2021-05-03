@@ -43,11 +43,7 @@ public class ProveidorImpMongo implements ProveidorDAO {
     @Override
     public int insertarLlista(List<Proveidor> provs) {
         conectar();
-
-        for (Proveidor proveidor : provs) {
-            mongoCollection.insertOne(proveidor);
-        }
-
+        mongoCollection.insertMany(provs);
         MongoDAOFactory.close();
         return provs.size();
     }

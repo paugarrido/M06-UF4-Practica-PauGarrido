@@ -68,14 +68,14 @@ public class Main {
 
     public static void ej10(){
         mongoDAOFactory.getEmpleatDAO().eliminar(7499);
-        Persistencia.mongo();
+        Persistencia.mongo(serializableDAOFactory, mongoDAOFactory, sqldaoFactory);
     }
 
     public static void ej11(){
         Empleat empleat = mongoDAOFactory.getEmpleatDAO().consultar(7654);
         empleat.setOfici("ANALISTA");
         mongoDAOFactory.getEmpleatDAO().modificar(empleat);
-        Persistencia.mongo();
+        Persistencia.mongo(serializableDAOFactory, mongoDAOFactory, sqldaoFactory);
     }
 
     public static void ej12(){
@@ -85,14 +85,14 @@ public class Main {
             comanda.setTotal(producte.getPreu() * comanda.getQuantitat());
             sqldaoFactory.getComandaDAO().modificar(comanda);
         });
-        Persistencia.sql();
+        Persistencia.sql(serializableDAOFactory, mongoDAOFactory, sqldaoFactory);
     }
 
     public static void ej1314(){
         Producte producte = sqldaoFactory.getProducteDAO().consultar(101863);
         producte.setStockactual(2);
         sqldaoFactory.getProducteDAO().modificarStock(producte);
-        Persistencia.sql();
+        Persistencia.sql(serializableDAOFactory, mongoDAOFactory, sqldaoFactory);
     }
 
 

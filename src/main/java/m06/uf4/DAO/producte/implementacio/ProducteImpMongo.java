@@ -43,11 +43,7 @@ public class ProducteImpMongo implements ProducteDAO {
     @Override
     public int insertarLlista(List<Producte> productes) {
         conectar();
-
-        for (Producte p : productes) {
-            mongoCollection.insertOne(p);
-        }
-
+        mongoCollection.insertMany(productes);
         MongoDAOFactory.close();
         return productes.size();
     }

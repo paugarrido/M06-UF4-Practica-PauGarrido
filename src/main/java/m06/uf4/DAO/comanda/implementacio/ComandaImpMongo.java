@@ -50,11 +50,7 @@ public class ComandaImpMongo implements ComandaDAO {
     @Override
     public int insertarLlista(List<Comanda> comandes) {
         conectar();
-
-        for (Comanda comanda : comandes) {
-            mongoCollection.insertOne(comanda);
-        }
-
+        mongoCollection.insertMany(comandes);
         MongoDAOFactory.close();
         return comandes.size();
     }
